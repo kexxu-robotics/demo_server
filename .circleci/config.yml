@@ -23,16 +23,20 @@ jobs:
           command: |
             nvm install 18.15.0
             nvm use 18.15.0
+      - restore_cache:
+          keys:
+            - v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
+            - v1-python-dependencies-
       - run:
           name: Install Python dependencies
           command: pwd && pip3 install -r ./backend/requirements.txt
       - save_cache:
           paths:
             - ~/.cache/pip3
-          key: v1-python-dependencies-{{ checksum ./backend/requirements.txt }}
+          key: v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
       - restore_cache:
           keys:
-            - v1-node-dependencies-{{ checksum ./frontend/package.json }}
+            - v1-node-dependencies-{{ checksum "./frontend/package.json" }}
             - v1-node-dependencies-
       - run:
           name: Install Vue.js dependencies
@@ -40,7 +44,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-node-dependencies-{{ checksum ./frontend/package.json }}
+          key: v1-node-dependencies-{{ checksum "./frontend/package.json" }}
       - run:
           name: Build Vue.js App
           command: yarn --cwd ./frontend build
