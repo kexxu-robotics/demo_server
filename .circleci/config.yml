@@ -8,44 +8,40 @@ jobs:
 
     steps:
       - checkout
-
-      # Install the specific Node.js version
       - run:
           name: Install Node.js
           command: |
             curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
             sudo apt-get install -y nodejs
-
-      # Install Python dependencies
       - restore_cache:
           keys:
-            - v1-python-dependencies-{{ checksum "requirements.txt" }}
+            - v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
             - v1-python-dependencies-
       - run:
           name: Install Python dependencies
-          command: pip install -r requirements.txt
+          command: pip install -r ./backend/requirements.txt
       - save_cache:
           paths:
             - ~/.cache/pip
-          key: v1-python-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
 
       # Install Vue.js dependencies
       - restore_cache:
           keys:
-            - v1-node-dependencies-{{ checksum "package.json" }}
+            - v1-node-dependencies-{{ checksum "./frontend/package.json" }}
             - v1-node-dependencies-
       - run:
           name: Install Vue.js dependencies
-          command: npm ci
+          command: yarn --cwd ./frontend install --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
-          key: v1-node-dependencies-{{ checksum "package.json" }}
+          key: v1-node-dependencies-{{ checksum ./frontend/"package.json" }}
 
       # Build Vue.js application
       - run:
           name: Build Vue.js App
-          command: npm run build
+          command: yarn --cwd ./frontend build
 
 workflows:
   version: 2
