@@ -12,7 +12,7 @@ jobs:
           command: sudo apt update #&& sudo apt upgrade -y
       - run:
           name: Update pip
-          command: pip3 install --upgrade pip3
+          command: python3.8 -m pip install --upgrade pip
       - run:
           name: Install Node.js
           command: |
