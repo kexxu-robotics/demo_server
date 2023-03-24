@@ -32,7 +32,7 @@ jobs:
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run:
           name: Install Python dependencies
-          command: pwd && pip3 install -r ./backend/requirements.txt
+          command: pwd # && pip3 install -r ./backend/requirements.txt
       - save_cache:
           paths:
             - ~/.cache/pip3
