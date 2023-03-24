@@ -18,15 +18,6 @@ jobs:
           command: |
             curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
             sudo apt-get install -y nodejs
-      - run:
-          name: Swap node versions
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --install' >> $BASH_ENV
-            source $BASH_ENV
-            nvm install --lts
-            nvm use 18.15.0
       - restore_cache:
           keys:
             - v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
