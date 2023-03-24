@@ -21,7 +21,8 @@ jobs:
       - run:
           name: Swap node versions
           command: |
-            nvm install --lts
+            nvm install 18.15.0
+            nvm use 18.15.0
       - run:
           name: Install Python dependencies
           command: pwd && pip3 install -r ./backend/requirements.txt
