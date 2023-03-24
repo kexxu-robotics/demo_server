@@ -24,6 +24,8 @@ jobs:
             set +e
             export NVM_DIR="$HOME/.nvm"
             nvm install 18.15.0
+            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+            echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
             node -v
             nvm alias defalut 18.15.0
             node -v
