@@ -1,14 +1,20 @@
 version: 2.1
-orbs:
-  python: circleci/python@2.0.3
 jobs:
   build-and-test:
-    docker:
-      - image: cimg/python:3.10.2
+    machines:
+        image: ubuntu-2004:202110-01
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
+      - run: uname -a
+#      - run: 
+#          name: "update os"
+#          command: sudo apt update && sudo apt upgrade -y
+#      - run:
+#          name: "install cypress deps"
+#          command: sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb -y
+#      - run:
+#          name: "changing host for cookies and cors"
+#          command: sudo tee -a /etc/hosts \<<<'127.0.0.1  dev-editor.kexxu.com'
 workflows:
   sample:
     jobs:
