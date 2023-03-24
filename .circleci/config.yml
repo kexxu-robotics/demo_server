@@ -12,7 +12,7 @@ jobs:
           command: sudo apt update #&& sudo apt upgrade -y
       - run:
           name: Update pip
-          command: pip install --upgrade pip
+          command: pip3 install --upgrade pip3
       - run:
           name: Install Node.js
           command: |
@@ -24,10 +24,10 @@ jobs:
             - v1-python-dependencies-
       - run:
           name: Install Python dependencies
-          command: pip install -r ./backend/requirements.txt
+          command: pip3 install -r ./backend/requirements.txt
       - save_cache:
           paths:
-            - ~/.cache/pip
+            - ~/.cache/pip3
           key: v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
       - restore_cache:
           keys:
