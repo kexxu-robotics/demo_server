@@ -27,7 +27,7 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
             nvm install --lts
-            nvm use --lts
+            nvm use 18.15.0
       - run:
           name: Install Python dependencies
           command: pwd && pip3 install -r ./backend/requirements.txt
