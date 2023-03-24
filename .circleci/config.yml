@@ -1,21 +1,54 @@
 version: 2.1
 jobs:
-  build-and-test:
-    machines:
-        image: ubuntu-2004:202110-01
+  build:
+    machine:
+      image: ubuntu-2004:202010-01
+    environment:
+      NODE_VERSION: 18.15.0
+
     steps:
       - checkout
-      - run: uname -a
-#      - run: 
-#          name: "update os"
-#          command: sudo apt update && sudo apt upgrade -y
-#      - run:
-#          name: "install cypress deps"
-#          command: sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb -y
-#      - run:
-#          name: "changing host for cookies and cors"
-#          command: sudo tee -a /etc/hosts \<<<'127.0.0.1  dev-editor.kexxu.com'
+
+      # Install the specific Node.js version
+      - run:
+          name: Install Node.js
+          command: |
+            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+
+      # Install Python dependencies
+      - restore_cache:
+          keys:
+            - v1-python-dependencies-{{ checksum "requirements.txt" }}
+            - v1-python-dependencies-
+      - run:
+          name: Install Python dependencies
+          command: pip install -r requirements.txt
+      - save_cache:
+          paths:
+            - ~/.cache/pip
+          key: v1-python-dependencies-{{ checksum "requirements.txt" }}
+
+      # Install Vue.js dependencies
+      - restore_cache:
+          keys:
+            - v1-node-dependencies-{{ checksum "package.json" }}
+            - v1-node-dependencies-
+      - run:
+          name: Install Vue.js dependencies
+          command: npm ci
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-node-dependencies-{{ checksum "package.json" }}
+
+      # Build Vue.js application
+      - run:
+          name: Build Vue.js App
+          command: npm run build
+
 workflows:
-  sample:
+  version: 2
+  build-deploy:
     jobs:
-      - build-and-test
+      - build
