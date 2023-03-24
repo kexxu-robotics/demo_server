@@ -5,9 +5,14 @@ jobs:
       image: ubuntu-2004:202010-01
     environment:
       NODE_VERSION: 18.15.0
-
     steps:
       - checkout
+      - run:
+          name: Update OS
+          command: sudo apt update && sudo apt upgrade -y
+      - run:
+          name: Update pip
+          command: pip install --upgrade pip
       - run:
           name: Install Node.js
           command: |
@@ -24,8 +29,6 @@ jobs:
           paths:
             - ~/.cache/pip
           key: v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
-
-      # Install Vue.js dependencies
       - restore_cache:
           keys:
             - v1-node-dependencies-{{ checksum "./frontend/package.json" }}
