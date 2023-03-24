@@ -24,7 +24,9 @@ jobs:
             set +e
             export NVM_DIR="$HOME/.nvm"
             nvm install 18.15.0
-            nvm use 18.15.0
+            node -v
+            nvm alias defalut 18.15.0
+            node -v
       - restore_cache:
           keys:
             - v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
