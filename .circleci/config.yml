@@ -27,12 +27,12 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
             nvm install --lts
-            nvm alias default 18.15.0
+            nvm use --lts
             echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
       - run:
           name: Install Python dependencies
-          command: pwd # && pip3 install -r ./backend/requirements.txt
+          command: pwd && pip3 install -r ./backend/requirements.txt
       - save_cache:
           paths:
             - ~/.cache/pip3
