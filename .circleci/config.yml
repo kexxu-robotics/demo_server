@@ -9,44 +9,18 @@ jobs:
       - checkout
       - run:
           name: Update OS
-          command: sudo apt update #&& sudo apt upgrade -y
+          command: sudo apt update
       - run:
-          name: Update pip
-          command: python3.8 -m pip install --upgrade pip
-      - run:
-          name: Install Node.js
+          name: Install Docker
           command: |
-            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-      - restore_cache:
-          keys:
-            - v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
-            - v1-python-dependencies-
+            curl -fsSL https://get.docker.com -o get-docker.sh
+            sudo sh get-docker.sh
+            sudo usermod -aG docker ${USER}
       - run:
-          name: Install Python dependencies
-          command: pwd && pip3 install -r ./backend/requirements.txt
-      - save_cache:
-          paths:
-            - ~/.cache/pip3
-          key: v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
-#      - restore_cache:
-#          keys:
-#            - v1-node-dependencies-{{ checksum "./frontend/package.json" }}
-#            - v1-node-dependencies-
-      - run:
-          name: Install Vue.js dependencies
+          name: Install Docker Compose
           command: |
-            nvm use 18.15.0
-            yarn --cwd ./frontend install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-node-dependencies-{{ checksum "./frontend/package.json" }}
-      - run:
-          name: Build Vue.js App
-          command: |
-            nvm use 18.15.0
-            yarn --cwd ./frontend build
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
 
 workflows:
   version: 2
