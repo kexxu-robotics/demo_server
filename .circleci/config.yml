@@ -30,13 +30,9 @@ jobs:
             nvm alias default v18.15.0
             echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-#      - restore_cache:
-#          keys:
-#            - v1-node-dependencies-{{ checksum "./frontend/package.json" }}
-#            - v1-node-dependencies-
       - run:
           name: Install Python dependencies
-          command: pip3 install -r ./backend/requirements.txt
+          command: pwd && pip3 install -r ./backend/requirements.txt
       - save_cache:
           paths:
             - ~/.cache/pip3
