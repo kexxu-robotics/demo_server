@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Update OS
-          command: sudo apt update && sudo apt upgrade -y
+          command: sudo apt update #&& sudo apt upgrade -y
       - run:
           name: Update pip
           command: pip install --upgrade pip
