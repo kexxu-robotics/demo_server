@@ -40,16 +40,18 @@ jobs:
       - save_cache:
           paths:
             - ~/.cache/pip3
-          key: v1-python-dependencies-{{ checksum "./backend/requirements.txt" }}
+          key: v1-python-dependencies-{{ checksum ./backend/requirements.txt }}
+      - restore_cache:
+          keys:
+            - v1-node-dependencies-{{ checksum ./frontend/package.json }}
+            - v1-node-dependencies-
       - run:
           name: Install Vue.js dependencies
           command: yarn --cwd ./frontend install --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
-          key: v1-node-dependencies-{{ checksum ./frontend/"package.json" }}
-
-      # Build Vue.js application
+          key: v1-node-dependencies-{{ checksum ./frontend/package.json }}
       - run:
           name: Build Vue.js App
           command: yarn --cwd ./frontend build
