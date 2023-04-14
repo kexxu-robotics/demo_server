@@ -1,13 +1,8 @@
-<script setup>
-</script>
-
 <template>
   <div>
-    <router-link to="login">Login</router-link> |
-    <router-link to="logout">Logout</router-link> | 
-    <router-link to="profile">Profile</router-link>
+    <Input></Input>
   </div>
-  <router-view></router-view>
 </template>
-
-<style scoped></style>
+<script>
+import Input from "./components/Input.vue";
+</script>

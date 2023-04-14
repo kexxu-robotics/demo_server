@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "dygraphs": "^2.2.1",
-    "vue": "^3.2.47",
-    "vue-router": "^4.0.13"
+    "vue": "^3.2.47"
   },
   "devDependencies": {
     "@cypress/vue": "^5.0.5",
