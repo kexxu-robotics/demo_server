@@ -15,7 +15,10 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.inputValue);
+      const delimiter = ',';
+      const arrayOfSubstrings = this.inputValue.split(delimiter);
+      console.log(arrayOfSubstrings);
+      const jsonString = JSON.stringify(arrayOfSubstrings);
     }
   }
 };

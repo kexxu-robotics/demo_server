@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import GraphDataInput from "./components/graph-data-input.vue";
+import GraphDataInput from "./components/GraphDataInput.vue";
 
 export default {
   components: {
