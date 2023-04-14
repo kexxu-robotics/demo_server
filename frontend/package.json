@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth0/auth0-vue": "^2.1.0",
     "aws-sdk": "^2.1342.0",
+    "dygraphs": "^2.2.1",
     "vue": "^3.2.47",
     "vue-router": "^4.0.13"
   },

@@ -264,9 +264,9 @@ available-typed-arrays@^1.0.5:
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
 aws-sdk@^2.1342.0:
-  version "2.1342.0"
-  resolved "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1342.0.tgz"
-  integrity sha512-RknStRPY+ohgOhuuDYEkAWuBcU9841EjtelZn4J2VubhaS7ZFQ2lmiYqm4P5Tw8Kwq6GuUqISBB8RCp8cO2qfA==
+  version "2.1358.0"
+  resolved "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1358.0.tgz"
+  integrity sha512-ZolqFlnm0mDNgub7FGrVi7r5A1rw+58zZziKhlis3IxOtIpHdx4BQU5pH4htAMuD0Ct557p/dC/wmnZH/1Rc9Q==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -277,7 +277,7 @@ aws-sdk@^2.1342.0:
     url "0.10.3"
     util "^0.12.4"
     uuid "8.0.0"
-    xml2js "0.4.19"
+    xml2js "0.5.0"
 
 aws-sign2@~0.7.0:
   version "0.7.0"
@@ -538,6 +538,11 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
+
+dygraphs@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/dygraphs/-/dygraphs-2.2.1.tgz"
+  integrity sha512-xnuvsvh2H/FKvJjTSlXgJpwCOhLOi3u0sHw1gsJg/Bmf29y6bnO14PbTz8MwHOa3GIbKqqgKVBMSOi+Z1gI2Gg==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -1550,18 +1555,18 @@ wrappy@1:
   resolved "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-xml2js@0.4.19:
-  version "0.4.19"
-  resolved "https://registry.npmjs.org/xml2js/-/xml2js-0.4.19.tgz"
-  integrity sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==
+xml2js@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npmjs.org/xml2js/-/xml2js-0.5.0.tgz"
+  integrity sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==
   dependencies:
     sax ">=0.6.0"
-    xmlbuilder "~9.0.1"
+    xmlbuilder "~11.0.0"
 
-xmlbuilder@~9.0.1:
-  version "9.0.7"
-  resolved "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-9.0.7.tgz"
-  integrity sha512-7YXTQc3P2l9+0rjaUbLwMKRhtmwg1M1eDf6nag7urC7pIPYLD9W/jmzQ4ptRSUbodw5S0jfoGTflLemQibSpeQ==
+xmlbuilder@~11.0.0:
+  version "11.0.1"
+  resolved "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-11.0.1.tgz"
+  integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
 
 yauzl@^2.10.0:
   version "2.10.0"
