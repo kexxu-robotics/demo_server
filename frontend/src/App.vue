@@ -1,8 +1,14 @@
 <template>
   <div>
-    <Input></Input>
+    <graph-data-input/>
   </div>
 </template>
 <script>
-import Input from "./components/Input.vue";
+import GraphDataInput from "./components/graph-data-input.vue";
+
+export default {
+  components: {
+    GraphDataInput,
+  }
+};
 </script>
